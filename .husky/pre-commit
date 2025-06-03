@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+npm run code:format
+git add .
