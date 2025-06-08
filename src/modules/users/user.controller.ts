@@ -1,4 +1,4 @@
-import { UserService } from './user.sevice';
+import { UserService } from './user.service';
 import {
   BadRequestException,
   Body,
