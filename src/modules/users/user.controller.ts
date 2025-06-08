@@ -12,6 +12,7 @@ import {
   UploadedFile,
   UseGuards,
   UseInterceptors,
+  NotFoundException,
 } from '@nestjs/common';
 import { User } from './user.model';
 import {
@@ -44,8 +45,12 @@ export class UserController {
 
   @Get(':id')
   @ApiOperation({ summary: 'Get user by ID' })
-  @ApiOkResponse({ description: 'Successfully fetched user data.' })
+  @ApiOkResponse({
+    description: 'Successfully fetched user data.',
+    type: UserDto,
+  })
   @ApiBadRequestResponse({ description: 'Bad Request' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   async getUser(@Param('id') id: string): Promise<UserDto> {
     return this.userService.getUser(id);
   }
