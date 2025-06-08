@@ -1,23 +1,13 @@
-import { ConfigService } from '@nestjs/config';
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
+import * as Joi from '@hapi/joi';
 
-type ConfigType = TypeOrmModuleOptions & PostgresConnectionOptions;
-type ConnectionOptions = ConfigType;
-
-export const ORMConfig = async (
-  configService: ConfigService,
-): Promise<ConnectionOptions> => ({
-  type: 'postgres',
-  host: configService.get('DATABASE_HOST'),
-  port: configService.get('DATABASE_PORT'),
-  username: configService.get('DATABASE_USERNAME'),
-  password: configService.get('DATABASE_PWD'),
-  database: configService.get('DATABASE_NAME'),
-  entities: ['dist/**/*.entity{.ts,.js}'],
-  synchronize: true, // only in development ! ! !
-  ssl: false,
-  extra: {
-    rejectUnauthorized: false,
-  },
+export const configValidationSchema = Joi.object({
+  DATABASE_HOST: Joi.string().required(),
+  DATABASE_PORT: Joi.string().default(5432).required(),
+  DATABASE_USERNAME: Joi.string().required(),
+  DATABASE_PWD: Joi.string().required(),
+  DATABASE_NAME: Joi.string().required(),
+  JWT_SECRET: Joi.string().required(),
+  JWT_SECRET_EXPIRES: Joi.number().required(),
+  JWT_REFRESH_SECRET: Joi.string().required(),
+  JWT_REFRESH_SECRET_EXPIRES: Joi.number().required(),
 });
