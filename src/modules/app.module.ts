@@ -10,6 +10,7 @@ import { ConfigModule } from '@nestjs/config';
 import { configValidationSchema } from '../config/schema.config';
 import { UserModule } from './users/user.module';
 import { AuthModule } from './auth/auth.module';
+import { AuctionModule } from './auctions/auction.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { AuthModule } from './auth/auth.module';
       validationSchema: configValidationSchema,
       UserModule,
       AuthModule,
+      AuctionModule,
     }),
   ],
   controllers: [],
