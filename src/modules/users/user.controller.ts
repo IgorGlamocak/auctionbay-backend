@@ -52,7 +52,11 @@ export class UserController {
   @ApiBadRequestResponse({ description: 'Bad Request' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   async getUser(@Param('id') id: string): Promise<UserDto> {
-    return this.userService.getUser(id);
+    const user = await this.userService.getUser(id);
+    if (!user) {
+      throw new NotFoundException(`User with ID ${id} not found`);
+    }
+    return user;
   }
 
   @Delete(':id')
