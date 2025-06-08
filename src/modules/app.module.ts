@@ -8,6 +8,7 @@ import {
 import * as process from 'process';
 import { ConfigModule } from '@nestjs/config';
 import { configValidationSchema } from '../config/schema.config';
+import { UserModule } from './users/user.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { configValidationSchema } from '../config/schema.config';
       isGlobal: true,
       envFilePath: [`.env.${process.env.STAGE}`],
       validationSchema: configValidationSchema,
+      UserModule,
     }),
   ],
   controllers: [],

@@ -13,44 +13,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  id String @id @default(uuid())
-  email String @unique
-  password String
+  id         String   @id @default(uuid())
+  email      String   @unique
+  password   String
   first_name String?
-  last_name String?
-  avatar String?
-  updatedAt DateTime @default(now())
-  createdAt DateTime @default(now())
-  auctions Auction[]
-  bids Bid[]
-}
-
-model Auction {
-  id Int @id @default(autoincrement())
-  title String
-  description String
-  startPrice Float
-  currentPrice Float?
-  startTime DateTime?
-  endTime DateTime
-  imageUrl String?
-  userId String
-  user User @relation(fields: [userId], references: [id])
-  bids Bid[]
-  currentWinner String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Bid {
-  id Int @id @default(autoincrement())
-  amount Float
-  bidTime DateTime
-  userId String
-  user User @relation(fields: [userId], references: [id])
-  auctionId Int
-  auction Auction @relation(fields: [auctionId], references: [id], onDelete: Cascade)
-  createdAt DateTime @default(now())
+  last_name  String?
+  avatar     String?
+  updatedAt  DateTime @default(now())Add commentMore actions
+  createdAt  DateTime @default(now())
 }
