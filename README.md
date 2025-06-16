@@ -15,11 +15,11 @@ JavaScript, Typescript, Node, NestJS, Express, Git, GitHub, PostgreSQL, Prisma, 
 ## Installation
 1. Clone the repository:
    ```
-   git clone https://github.com/tilch/01-project-AUCTIONBAY-backend
+   git clone https://github.com/IgorGlamocak/auctionbay-backend
    ```
 2. Navigate to the project directory:
    ```
-   cd 01-project-AUCTIONBAY-backend
+   cd auctionbay-backend
    ```
 3. Install dependencies:
    ```
