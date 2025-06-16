@@ -33,6 +33,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/', app, document);
 
+  app.use('/uploads', express.static('uploads'));
+
   const PORT = process.env.PORT || 8080;
   await app.listen(PORT);
 

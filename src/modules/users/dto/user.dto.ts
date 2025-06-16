@@ -14,6 +14,13 @@ export class UserDto {
   email: string | null;
 
   @ApiProperty({
+    example: '/uploads/users/550e8…jpg',
+    description: 'Relative path to the avatar',
+    required: false,
+  })
+  avatar: string | null;
+
+  @ApiProperty({
     example: '2024-01-01T00:00:00.000Z',
     description: 'Date when the user account was created',
   })
